@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayslipRound2", "PayslipRound2\PayslipRound2.csproj", "{8EAA83FA-7307-43E0-94FE-72A74F75AECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayslipTests", "PayslipTests\PayslipTests.csproj", "{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EAA83FA-7307-43E0-94FE-72A74F75AECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAA83FA-7307-43E0-94FE-72A74F75AECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAA83FA-7307-43E0-94FE-72A74F75AECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAA83FA-7307-43E0-94FE-72A74F75AECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

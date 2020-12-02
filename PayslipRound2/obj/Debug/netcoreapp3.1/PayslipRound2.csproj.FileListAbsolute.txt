@@ -1,0 +1,13 @@
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/input.csv
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/PayslipRound2.deps.json
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/PayslipRound2.runtimeconfig.json
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/PayslipRound2.runtimeconfig.dev.json
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/PayslipRound2.dll
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/bin/Debug/netcoreapp3.1/PayslipRound2.pdb
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.csprojAssemblyReference.cache
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.AssemblyInfoInputs.cache
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.AssemblyInfo.cs
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.csproj.CoreCompileInputs.cache
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.dll
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.pdb
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipRound2/obj/Debug/netcoreapp3.1/PayslipRound2.genruntimeconfig.cache
