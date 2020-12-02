@@ -17,7 +17,11 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/PayslipTests.csproj": {
+            "projectPath": "/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/PayslipTests.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

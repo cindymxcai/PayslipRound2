@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PayslipTests\PayslipTests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Remove="input.csv" />
       <Content Include="input.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
