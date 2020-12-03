@@ -9,7 +9,9 @@
       <Content Include="input.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <None Remove="output.csv" />
+      <Content Include="output.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="output.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
