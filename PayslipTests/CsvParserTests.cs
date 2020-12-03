@@ -19,7 +19,6 @@ namespace PayslipTests
             Assert.Equal(9,userInformation.SuperRate);
             Assert.Equal("01, March",userInformation.StartDate);
             Assert.Equal("31, March",userInformation.EndDate);
-
         }
     }
 }
