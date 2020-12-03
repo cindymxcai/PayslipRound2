@@ -5,14 +5,23 @@ namespace Payslip
 {
     public class FileReader : IFileReader
     {
-        private TextFieldParser _textFieldParser;
+        private readonly TextFieldParser _textFieldParser;
 
-        public string[] ReadFileLine(string path)
+        public FileReader(string path)
         {
             _textFieldParser = new TextFieldParser(path) {TextFieldType = FieldType.Delimited};
             _textFieldParser.SetDelimiters(",");
+
+        }
+
+        public string[] ReadFileLine()
+        { 
             return _textFieldParser.ReadFields();
         }
 
+        public bool ReachedEnd()
+        {
+            return _textFieldParser.EndOfData;
+        }
     }
 }

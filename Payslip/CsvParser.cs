@@ -5,24 +5,37 @@ namespace Payslip
 {
     public class CsvParser : IInputParser
     {
-        private string[] Fields { get; }
+        private readonly IFileReader _fileReader;
 
-        public CsvParser(string path, IFileReader fileReader)
+        public CsvParser(IFileReader fileReader)
         {
-            Fields = fileReader.ReadFileLine(path);
+            _fileReader = fileReader;
         }
         
-        public User GetUserInformation()
+        public User GetNextUserInputInformation()
         {
-            var dateInputs = Fields[4].Split(" ");
+            if (_fileReader.ReachedEnd())
+            {
+                return null;
+            }
+
+            var fields = _fileReader.ReadFileLine();
+
+            return GetUserInformation(fields);
+             
+        }      
+        
+        public User GetUserInformation(string[] fields)
+        {
+            var dateInputs = fields[4].Split(" ");
             dateInputs.ToList().Remove("-");
 
             var userInfo = new User
             {
-                Name = Fields[0],
-                Surname = Fields[1],
-                Salary = int.Parse(Fields[2]),
-                SuperRate = int.Parse(Fields[3].Replace("%","")),
+                Name = fields[0],
+                Surname = fields[1],
+                Salary = int.Parse(fields[2]),
+                SuperRate = int.Parse(fields[3].Replace("%","")),
                 StartDate = ParsePaymentStart(dateInputs),
                 EndDate = ParsePaymentEnd(dateInputs)
             };

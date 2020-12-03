@@ -10,10 +10,13 @@ namespace PayslipTests
         [Fact]
         public void GivenUserInformationShouldGeneratePayslip()
         {
-            var csvParser = new CsvParser(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"), new FileReader());
-            
-            var payslipGenerator = new PayslipGenerator(csvParser);
-            var payslip = payslipGenerator.GeneratePayslip();
+            var fileReader = new FileReader(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"));
+            var csvParser = new CsvParser(fileReader);
+
+            var payslipGenerator = new PayslipGenerator();
+
+            var payslipHandler = new PayslipsHandler(csvParser, payslipGenerator);
+            var payslip = payslipHandler.CreateAllPayslips()[0];
             
             
             Assert.Equal("David Rudd",payslip.Fullname);

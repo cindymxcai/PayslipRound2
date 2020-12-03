@@ -5,38 +5,24 @@ namespace Payslip
 {
     public class PayslipGenerator 
     {
-        private readonly IInputParser _csvParser;
-
-        public PayslipGenerator(IInputParser csvParser)
+        public Payslip GeneratePayslip(User user)
         {
-            _csvParser = csvParser;
-        }
-
-        public Payslip GeneratePayslip()
-        {
-            var userInformation = GetUserInformation();
             var payslip = new Payslip
             {
-                Fullname = $"{userInformation.Name} {userInformation.Surname}",
-                GrossIncome = CalculateGrossIncome(userInformation.Salary),
-                IncomeTax = CalculateIncomeTax(userInformation.Salary)
+                Fullname = $"{user.Name} {user.Surname}",
+                GrossIncome = CalculateGrossIncome(user.Salary),
+                IncomeTax = CalculateIncomeTax(user.Salary)
             };
 
             payslip.NetIncome = CalculateNetIncome(payslip.GrossIncome, payslip.IncomeTax);
 
-            payslip.Super = CalculateSuperAmount(userInformation.SuperRate, payslip.GrossIncome);
+            payslip.Super = CalculateSuperAmount(user.SuperRate, payslip.GrossIncome);
 
-            payslip.PayPeriod =
-                $"{userInformation.StartDate.Replace(",", "")} - {userInformation.EndDate.Replace(",", "")}";
+            payslip.PayPeriod = $"{user.StartDate.Replace(",", "")} - {user.EndDate.Replace(",", "")}";
 
             return payslip;
         }
-
-        private User GetUserInformation()
-        {
-            return _csvParser.GetUserInformation();
-        }
-
+        
         private int CalculateIncomeTax(int salary)
         {
             double incomeTax = 0;

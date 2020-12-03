@@ -97,3 +97,4 @@
 /Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/bin/Debug/netcoreapp3.1/input.csv
 /Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/bin/Debug/netcoreapp3.1/Payslip.dll
 /Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/bin/Debug/netcoreapp3.1/Payslip.pdb
+/Users/cindy.cai/RiderProjects/PayslipRound2/PayslipTests/bin/Debug/netcoreapp3.1/output.csv

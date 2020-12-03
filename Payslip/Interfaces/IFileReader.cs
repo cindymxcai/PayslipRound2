@@ -2,6 +2,7 @@ namespace Payslip.Interfaces
 {
     public interface IFileReader
     {
-        string[] ReadFileLine(string path);
+        string[] ReadFileLine();
+        bool ReachedEnd();
     }
 }

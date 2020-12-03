@@ -2,6 +2,7 @@ namespace Payslip.Interfaces
 {
     public interface IInputParser
     {
-        User GetUserInformation();
+        User GetUserInformation(string[] Fields);
+        User GetNextUserInputInformation();
     }
 }
