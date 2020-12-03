@@ -10,7 +10,7 @@ namespace Payslip
         public FileWriter(string outputPath)
         {
             _outputPath = outputPath;
-            File.Delete(outputPath);
+            File.CreateText(outputPath);
         }
         public void WritePayslipInformation(Payslip payslip)
         {
