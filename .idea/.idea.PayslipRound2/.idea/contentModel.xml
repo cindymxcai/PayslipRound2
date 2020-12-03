@@ -49,7 +49,9 @@
             </e>
           </e>
         </e>
+        <e p="OutputTests.cs" t="Include" />
         <e p="PayslipGeneratorTests.cs" t="Include" />
+        <e p="PayslipHandlerTests.cs" t="Include" />
         <e p="PayslipTests.csproj" t="IncludeRecursive" />
       </e>
     </e>
