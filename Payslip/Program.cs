@@ -7,24 +7,20 @@ namespace Payslip
     {
         public static void Main(string[] args)
         {
-             var fileReader = new FileReader();
-            var csvParser = new CsvParser(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"), fileReader);
-            var payslipGenerator = new PayslipGenerator(csvParser);
-            var payslip = payslipGenerator.GeneratePayslip();
+             var fileReader = new FileReader(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"));
+             var fileWriter = new FileWriter(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/output.csv"));
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine($"Hello {payslip.Fullname}! Here is your payslip: ");
-            Console.ResetColor();
-         
-            
-            Console.WriteLine($"For Pay Period {payslip.PayPeriod}");
-            Console.WriteLine($"Gross Income: {payslip.GrossIncome}");
-            Console.WriteLine($"Income Tax: {payslip.IncomeTax}");
-            Console.WriteLine($"Net Income: {payslip.NetIncome}");
-            Console.WriteLine($"Super: {payslip.Super}");
+             var consoleWriter = new ConsoleWriter();
+             var csvParser = new CsvParser(fileReader);
+            var payslipGenerator = new PayslipGenerator();
+            var payslipHandler = new PayslipsHandler(csvParser, payslipGenerator);
+            var payslips = payslipHandler.CreateAllPayslips();
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Thank you for using MYOB!");
+            foreach (var payslip in payslips)
+            {
+                fileWriter.WritePayslipInformation(payslip);
+                consoleWriter.WritePayslipInformation(payslip);
+            }
         }
     }
 }
