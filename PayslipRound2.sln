@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayslipRound2", "PayslipRound2\PayslipRound2.csproj", "{8EAA83FA-7307-43E0-94FE-72A74F75AECE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip", "Payslip\Payslip.csproj", "{8EAA83FA-7307-43E0-94FE-72A74F75AECE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayslipTests", "PayslipTests\PayslipTests.csproj", "{D097E439-2BA4-4997-B95E-6B9DE35DA4BD}"
 EndProject

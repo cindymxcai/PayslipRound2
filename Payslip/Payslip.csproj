@@ -4,14 +4,13 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\PayslipTests\PayslipTests.csproj" />
-    </ItemGroup>
-
     <ItemGroup>
       <None Remove="input.csv" />
       <Content Include="input.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="output.csv" />
+      <Content Include="output.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

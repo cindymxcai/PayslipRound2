@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Payslip;
 using Xunit;
 
 namespace PayslipTests
@@ -9,8 +10,8 @@ namespace PayslipTests
         [Fact]
         public void GivenCsvFileShouldParseIntoUserInformation()
         {
-            var csvParser = new CsvParser(Path.Combine(Environment.CurrentDirectory, "../../../../PayslipRound2/input.csv"));
-            var userInformation = csvParser.GetUserInformation();
+            var csvParser = new CsvParser( new FileReader(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv")));
+            var userInformation = csvParser.GetNextUserInputInformation();
             
             Assert.Equal("David",userInformation.Name);
             Assert.Equal("Rudd",userInformation.Surname);
