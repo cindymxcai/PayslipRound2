@@ -1,28 +1,17 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualBasic.FileIO;
+using Payslip.Interfaces;
 
-namespace PayslipRound2
+namespace Payslip
 {
-    public class CsvParser
+    public class CsvParser : IInputParser
     {
-        private TextFieldParser _textFieldParser;
-
         private string[] Fields { get; }
 
-        public CsvParser(string path)
+        public CsvParser(string path, IFileReader fileReader)
         {
-            Fields = SplitRow(path).ToArray();
+            Fields = fileReader.ReadFileLine(path);
         }
-
-        private IEnumerable<string> SplitRow(string path)
-        {
-            _textFieldParser = new TextFieldParser(path) {TextFieldType = FieldType.Delimited};
-            _textFieldParser.SetDelimiters(",");
-            return _textFieldParser.ReadFields();
-        }
-
+        
         public User GetUserInformation()
         {
             var dateInputs = Fields[4].Split(" ");

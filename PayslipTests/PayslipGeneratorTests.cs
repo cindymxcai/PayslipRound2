@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using PayslipRound2;
+using Payslip;
 using Xunit;
 
 namespace PayslipTests
@@ -10,11 +10,10 @@ namespace PayslipTests
         [Fact]
         public void GivenUserInformationShouldGeneratePayslip()
         {
-            var csvParser = new CsvParser(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"));
-            var userInformation = csvParser.GetUserInformation();
+            var csvParser = new CsvParser(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"), new FileReader());
             
-            var payslipGenerator = new PayslipGenerator();
-            var payslip = payslipGenerator.GeneratePayslip(userInformation);
+            var payslipGenerator = new PayslipGenerator(csvParser);
+            var payslip = payslipGenerator.GeneratePayslip();
             
             
             Assert.Equal("David Rudd",payslip.Fullname);

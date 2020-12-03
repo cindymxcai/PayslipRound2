@@ -1,11 +1,20 @@
 using System;
+using Payslip.Interfaces;
 
-namespace PayslipRound2
+namespace Payslip
 {
-    public class PayslipGenerator
+    public class PayslipGenerator 
     {
-        public Payslip GeneratePayslip(User userInformation)
+        private readonly IInputParser _csvParser;
+
+        public PayslipGenerator(IInputParser csvParser)
         {
+            _csvParser = csvParser;
+        }
+
+        public Payslip GeneratePayslip()
+        {
+            var userInformation = GetUserInformation();
             var payslip = new Payslip
             {
                 Fullname = $"{userInformation.Name} {userInformation.Surname}",
@@ -16,10 +25,16 @@ namespace PayslipRound2
             payslip.NetIncome = CalculateNetIncome(payslip.GrossIncome, payslip.IncomeTax);
 
             payslip.Super = CalculateSuperAmount(userInformation.SuperRate, payslip.GrossIncome);
-            
-            payslip.PayPeriod = $"{userInformation.StartDate.Replace(",", "")} - {userInformation.EndDate.Replace(",", "")}";
+
+            payslip.PayPeriod =
+                $"{userInformation.StartDate.Replace(",", "")} - {userInformation.EndDate.Replace(",", "")}";
 
             return payslip;
+        }
+
+        private User GetUserInformation()
+        {
+            return _csvParser.GetUserInformation();
         }
 
         private int CalculateIncomeTax(int salary)
@@ -30,6 +45,7 @@ namespace PayslipRound2
             {
                 incomeTax = 0;
             }
+
             if (salary >= 18201 && salary <= 37000)
             {
                 incomeTax = (((salary - 18200) * 0.19) / 12);
@@ -44,6 +60,7 @@ namespace PayslipRound2
             {
                 incomeTax = (19822 + (salary - 87000) * 0.37) / 12;
             }
+
             if (salary >= 180001)
             {
                 incomeTax = (54232 + (salary - 180000) * 0.45) / 12;
@@ -66,6 +83,5 @@ namespace PayslipRound2
         {
             return Convert.ToInt32(Math.Round(salary / 12.0));
         }
-        
     }
 }
