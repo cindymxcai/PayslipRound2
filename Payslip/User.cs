@@ -1,8 +1,6 @@
-using System;
-
-namespace PayslipTests
+namespace PayslipRound2
 {
-    public class UserInformation{
+    public class User{
         
         public string Name { get; set; }
 

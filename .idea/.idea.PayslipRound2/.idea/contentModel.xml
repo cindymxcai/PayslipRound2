@@ -11,23 +11,26 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_PayslipRound2.1946684637.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
-      <e p="PayslipRound2" t="IncludeRecursive">
+      <e p="Payslip" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CsvParser.cs" t="Include" />
         <e p="input.csv" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
-              <e p="PayslipRound2.AssemblyInfo.cs" t="Include" />
+              <e p="Payslip.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
-        <e p="PayslipRound2.csproj" t="IncludeRecursive" />
+        <e p="Payslip.cs" t="Include" />
+        <e p="Payslip.csproj" t="IncludeRecursive" />
+        <e p="PayslipGenerator.cs" t="Include" />
         <e p="Program.cs" t="Include" />
+        <e p="User.cs" t="Include" />
       </e>
       <e p="PayslipRound2.sln" t="IncludeFlat" />
       <e p="PayslipTests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="CsvParser.cs" t="Include" />
         <e p="CsvParserTests.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -36,8 +39,8 @@
             </e>
           </e>
         </e>
+        <e p="PayslipGeneratorTests.cs" t="Include" />
         <e p="PayslipTests.csproj" t="IncludeRecursive" />
-        <e p="UserInformation.cs" t="Include" />
       </e>
     </e>
   </component>
