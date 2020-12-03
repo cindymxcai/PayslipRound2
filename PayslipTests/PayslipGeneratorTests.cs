@@ -1,3 +1,4 @@
+using Moq;
 using Payslip;
 using Xunit;
 
@@ -11,7 +12,7 @@ namespace PayslipTests
 
         public void GivenFirstAndLastNameShouldFormatIntoFullName(string firstName, string lastName, string expectedName)
         {
-            var user = new User {Name = firstName, Surname = lastName, Salary = 0, EndDate = "", StartDate = "", SuperRate = 0};
+            var user = Mock.Of<User>( u => u.Name == firstName && u.Surname == lastName && u.Salary == 0 && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             var payslipGenerator = new PayslipGenerator();
             var  payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedName, payslip.Fullname);
@@ -25,7 +26,7 @@ namespace PayslipTests
         
         public void GivenAnnualSalaryShouldCalculateGrossIncome(int salary, int expectedGrossIncome)
         {
-            var user = new User {Name = "", Surname = "", Salary = salary, EndDate = "", StartDate = "", SuperRate = 0};
+            var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             var payslipGenerator = new PayslipGenerator();
             var  payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedGrossIncome, payslip.GrossIncome);
@@ -41,7 +42,7 @@ namespace PayslipTests
         
         public void GivenSalaryShouldCalculateIncomeTax(int salary, int expectedTax)
         {
-            var user = new User {Name = "", Surname = "", Salary = salary, EndDate = "", StartDate = "", SuperRate = 0};
+            var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             var payslipGenerator = new PayslipGenerator();
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedTax, payslip.IncomeTax);
@@ -55,7 +56,7 @@ namespace PayslipTests
 
         public void GivenGrossSalaryAndIncomeTaxShouldCalculateNetIncome(int salary, int expectedNetIncome)
         {
-            var user = new User {Name = "", Surname = "", Salary = salary, EndDate = "", StartDate = "", SuperRate = 0};
+            var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             var payslipGenerator = new PayslipGenerator();
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedNetIncome, payslip.NetIncome);
@@ -69,7 +70,7 @@ namespace PayslipTests
         
         public void GivenGrossIncomeAndSuperRateShouldCalculateSuper(int salary, int superRate, int expectedSuper)
         {
-            var user = new User {Name = "", Surname = "", Salary = salary, EndDate = "", StartDate = "", SuperRate = superRate};
+            var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == superRate);
             var payslipGenerator = new PayslipGenerator();
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedSuper, payslip.Super);
