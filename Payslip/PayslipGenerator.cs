@@ -5,7 +5,7 @@ namespace Payslip
 {
     public class PayslipGenerator 
     {
-        public Payslip GeneratePayslip(User user)
+        public virtual Payslip GeneratePayslip(User user)
         {
             var payslip = new Payslip
             {

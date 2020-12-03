@@ -1,8 +1,8 @@
-using System;
-using System.IO;
-using System.Linq;
+using Moq;
 using Payslip;
+using Payslip.Interfaces;
 using Xunit;
+using slip = Payslip.Payslip;
 
 namespace PayslipTests
 {
@@ -11,12 +11,18 @@ namespace PayslipTests
         [Fact]
         public void GivenUserInformationShouldGeneratePayslip()
         {
-            var fileReader = new FileReader(Path.Combine(Environment.CurrentDirectory, "../../../../Payslip/input.csv"));
-            var csvParser = new CsvParser(fileReader);
+            var csvParser = new Mock<IInputParser>();
+            csvParser.SetupSequence(p => p.GetNextUserInputInformation())
+                .Returns(new User {Name = "David", Surname = "Rudd", StartDate = "01 March", EndDate = "31 March", Salary = 60050, SuperRate = 9})
+                .Returns(new User {Name = "Ryan", Surname = "Chen", StartDate = "01 March", EndDate = "31 March", Salary = 120000, SuperRate = 10});
+            
 
-            var payslipGenerator = new PayslipGenerator();
+            var payslipGenerator = new Mock<PayslipGenerator>();
+            payslipGenerator.SetupSequence(p=>p.GeneratePayslip(It.IsAny<User>()))
+                .Returns(new slip{Fullname = "David Rudd", PayPeriod = "01 March - 31 March", GrossIncome = 5004, IncomeTax = 922, NetIncome = 4082, Super = 450})
+                .Returns(new slip{Fullname = "Ryan Chen", PayPeriod = "01 March - 31 March", GrossIncome = 10000, IncomeTax = 2669, NetIncome = 7331, Super = 1000});
 
-            var payslipHandler = new PayslipsHandler(csvParser, payslipGenerator);
+            var payslipHandler = new PayslipsHandler(csvParser.Object, payslipGenerator.Object);
             var payslips = payslipHandler.CreateAllPayslips();
             var davidPayslip = payslips[0];
             

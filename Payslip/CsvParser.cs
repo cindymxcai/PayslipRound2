@@ -22,7 +22,6 @@ namespace Payslip
             var fields = _fileReader.ReadFileLine();
 
             return GetUserInformation(fields);
-             
         }      
         
         public User GetUserInformation(string[] fields)
