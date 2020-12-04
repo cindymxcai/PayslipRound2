@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Payslip
@@ -12,7 +13,10 @@ namespace Payslip
 
              var consoleWriter = new ConsoleWriter();
              var csvParser = new CsvParser(fileReader);
-            var payslipGenerator = new PayslipGenerator();
+             
+            
+            var calculationsHandler = new MonthlyCalculationsHandler();
+            var payslipGenerator = new PayslipCalculator(calculationsHandler);
             var payslipHandler = new PayslipsHandler(csvParser, payslipGenerator);
             var payslips = payslipHandler.CreateAllPayslips();
 

@@ -17,7 +17,7 @@ namespace PayslipTests
                 .Returns(new User {Name = "Ryan", Surname = "Chen", StartDate = "01 March", EndDate = "31 March", Salary = 120000, SuperRate = 10});
             
 
-            var payslipGenerator = new Mock<PayslipGenerator>();
+            var payslipGenerator = new Mock<IPayslipCalculator>();
             payslipGenerator.SetupSequence(p=>p.GeneratePayslip(It.IsAny<User>()))
                 .Returns(new slip{Fullname = "David Rudd", PayPeriod = "01 March - 31 March", GrossIncome = 5004, IncomeTax = 922, NetIncome = 4082, Super = 450})
                 .Returns(new slip{Fullname = "Ryan Chen", PayPeriod = "01 March - 31 March", GrossIncome = 10000, IncomeTax = 2669, NetIncome = 7331, Super = 1000});

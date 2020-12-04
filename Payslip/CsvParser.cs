@@ -15,12 +15,8 @@ namespace Payslip
         public User GetNextUserInputInformation()
         {
             if (_fileReader.ReachedEnd())
-            {
                 return null;
-            }
-
             var fields = _fileReader.ReadFileLine();
-
             return GetUserInformation(fields);
         }      
         
