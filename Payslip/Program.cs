@@ -16,7 +16,8 @@ namespace Payslip
              
             
             var calculationsHandler = new MonthlyCalculationsHandler();
-            var payslipGenerator = new PayslipCalculator(calculationsHandler);
+            var monthValidator = new DateValidator();
+            var payslipGenerator = new PayslipCalculator(calculationsHandler, monthValidator);
             var payslipHandler = new PayslipsHandler(csvParser, payslipGenerator);
             var payslips = payslipHandler.CreateAllPayslips();
 

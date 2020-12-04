@@ -16,7 +16,7 @@ namespace PayslipTests
         public void GivenFirstAndLastNameShouldFormatIntoFullName(string firstName, string lastName, string expectedName)
         {
             var user = Mock.Of<User>( u => u.Name == firstName && u.Surname == lastName && u.Salary == 0 && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var  payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedName, payslip.Fullname);
         }
@@ -31,7 +31,7 @@ namespace PayslipTests
         {
             var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             _calculator.Setup(c => c.CalculateGrossIncome(It.IsAny<int>())).Returns(expectedGrossIncome);
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var  payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedGrossIncome, payslip.GrossIncome);
         }
@@ -48,7 +48,7 @@ namespace PayslipTests
         {
             var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             _calculator.Setup(c => c.CalculateIncomeTax(It.IsAny<int>())).Returns(expectedTax);
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedTax, payslip.IncomeTax);
         }
@@ -63,7 +63,7 @@ namespace PayslipTests
         {
             var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == It.IsAny<int>());
             _calculator.Setup(c => c.CalculateNetIncome(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedNetIncome);
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedNetIncome, payslip.NetIncome);
         }
@@ -78,7 +78,7 @@ namespace PayslipTests
         {
             var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == salary && u.EndDate == "" && u.StartDate == "" && u.SuperRate == superRate);
             _calculator.Setup(c => c.CalculateSuper(It.IsAny<int>(), It.IsAny<int>())).Returns(expectedSuper);
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Equal(expectedSuper, payslip.Super);
         }
@@ -89,7 +89,7 @@ namespace PayslipTests
         {
             var user = Mock.Of<User>( u => u.Name == "" && u.Surname == "" && u.Salary == -1 && u.EndDate == "" && u.StartDate == "" && u.SuperRate == 0);
             _calculator.Setup(c => c.CalculateIncomeTax(It.IsAny<int>())).Throws<Exception>();
-            var payslipGenerator = new PayslipCalculator(_calculator.Object);
+            var payslipGenerator = new PayslipCalculator(_calculator.Object, new DateValidator());
             var payslip = payslipGenerator.GeneratePayslip(user);
             Assert.Null(payslip.Fullname);
             Assert.Equal(0, payslip.GrossIncome);
